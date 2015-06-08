@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.jrue.persistence.UserService">
+
+    <resultMap id="result" type="user">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="employeeId" column="employeeId"/>
+        <result property="departmentName" column="departmentName"/>
+    </resultMap>
+
+    <select id="getAllUser" parameterType="int" resultMap="result">
+        SELECT id,name,employeeId,departmentName FROM m_account
+    </select>
+
+    <insert id="saveUser" parameterType="user">
+        INSERT INTO m_account (id,name,employeeId,departmentName)
+        VALUE (#{id},#{name},#{employeeId},#{departmentName})
+    </insert>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE m_account
+        SET
+        name = #{name},
+        employeeId = #{employeeId},
+        departmentName = #{departmentName}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM m_account
+        WHERE id = #{id}
+    </delete>
+</mapper>

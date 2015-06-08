@@ -1,0 +1,4 @@
+org\jrue\persistence\UserService.class
+org\jrue\controller\RegistrationController.class
+org\jrue\domain\User.class
+org\jrue\validator\UserRegistrationValidator.class
